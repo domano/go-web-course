@@ -10,7 +10,6 @@ var userTemplate = `
 {{ range . }}
 =================
 Name:   {{.Name}}
-Age:    {{.Age}}
 Status: {{ .IsAdmin | showStatus}}
 =================
 {{end}}
@@ -30,11 +29,10 @@ func main() {
 
 	users := []struct {
 		Name   string
-		Age    int
 		IsAdmin bool
 	}{
-		{"Dino Omanovic", 27, true},
-		{"Max Mustermann", 54, false},
+		{"Dino Omanovic", true},
+		{"Max Mustermann", false},
 	}
 
 	t := template.New("template")

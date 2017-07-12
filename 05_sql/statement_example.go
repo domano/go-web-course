@@ -8,7 +8,6 @@ import (
 )
 
 var (
-	id    int
 	name  string
 	age   int
 	admin bool
@@ -27,15 +26,15 @@ func main() {
 
 	statement.Exec("Dino Omanovic", 27, true)
 	rows, _:= db.Query(
-		"SELECT * FROM Users;")
+		"SELECT name, age, admin FROM Users;")
 
 	for rows.Next() {
-		rows.Scan(&id, &name, &age, &admin)
+		rows.Scan(&name, &age, &admin)
 	}
 	defer rows.Close()
 
 
-	fmt.Printf("Id: %d, Name: %s, Age: %d, Admin:%t", id, name, age, admin)
+	fmt.Printf("Name: %s, Age: %d, Admin:%t", name, age, admin)
 }
 
 func createTable(db *sql.DB) (sql.Result, error) {

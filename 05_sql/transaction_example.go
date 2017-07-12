@@ -8,7 +8,6 @@ import (
 )
 
 var (
-	id    int
 	name  string
 	age   int
 	admin bool
@@ -38,15 +37,15 @@ func main() {
 	transaction.Commit()
 
 	rows, _ := db.Query(
-		"SELECT * FROM Users;")
+		"SELECT name, age, admin FROM Users;")
 
 	for rows.Next() {
-		rows.Scan(&id, &name, &age, &admin)
+		rows.Scan(&name, &age, &admin)
 	}
 	defer rows.Close()
 
 
-	fmt.Printf("Id: %d, Name: %s, Age: %d, Admin:%t", id, name, age, admin)
+	fmt.Printf("Name: %s, Age: %d, Admin:%t", name, age, admin)
 }
 func insertValues(tx *sql.Tx) (sql.Result, error) {
 	return tx.Exec(

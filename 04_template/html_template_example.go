@@ -13,13 +13,11 @@ var htmlUserTemplate = `
 <table>
 <tr>
 	<th>Name</th>
-	<th>Age</th>
 	<th>Status</th>
 </tr>
 {{ range . }}
 <tr>
 	<td>{{.Name}}</td>
-	<td>{{.Age}}</td>
 	<td>{{ .IsAdmin | showStatus}}</td>
 </tr>
 </table>
@@ -43,12 +41,11 @@ func main() {
 
 	users := []struct {
 		Name    string
-		Age     int
 		IsAdmin bool
 	}{
-		{"Dino Omanovic", 27, true},
-		{"Max Mustermann", 54, false},
-		{"Herr Bärmann<script>alert('schlimm!');</script>", 54, false},
+		{"Dino Omanovic", true},
+		{"Max Mustermann", false},
+		{"Herr Bärmann<script>alert('schlimm!');</script>",false},
 	}
 
 	t := template.New("template")
