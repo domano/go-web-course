@@ -69,3 +69,6 @@
 
 ## go-bindata - Assets ausliefern leicht gemacht
 Optional, bei Bedarf
+
+## Komponententesten mit dem HTTP-Recorder
+Optional, bei Bedarf
