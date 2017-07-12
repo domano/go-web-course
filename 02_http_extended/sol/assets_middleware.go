@@ -1,4 +1,4 @@
-package main
+package sol
 
 import (
 "net/http"
@@ -12,7 +12,7 @@ type AssetProxy struct {
 }
 
 func (p *AssetProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if p.isAssetPath(r.URL.Path) {
+	if p.isAssetPath(r.URL.Path) && r.Method == http.MethodGet{
 		pathElements := strings.Split(r.URL.Path, "/")
 		fileName := pathElements[len(pathElements)-1]
 		fileBytes, err := ioutil.ReadFile(fileName)

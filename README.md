@@ -1,17 +1,31 @@
 # go-web-course
-## REST
-## Warum Go?
 ## Das net/http Package
-### Handler
-### Requests & ResponseWriter
-### Server
-### Routing
-### Wir schreiben einen HTTP-Server!
+* [Ein minimaler Webserver](01_http/minimal_serve_http.go)
 
-## Handler Chaining / Middlewares
-### Context
-### Beispiel: Asset-Middleware
-### Wir schreiben eine Logging-Middleware!
+### Handler
+* [Ein einfacher Handler](01_http/handler_example.go)
+
+### Server
+* [Ein Minimaler Server](01_http/server_example.go)
+* [Ein Server mit verschiedenen Routen](01_http/serve_mux_example.go)
+* [Ein Handler mit verschiedenen Routen](01_http/handler.go)
+
+### HTTPS
+* [TLS zu nutzen ist ganz einfach](01_http/tls_serve_http.go)
+
+### Wir schreiben einen HTTP-Server!
+* [Schreiben wir einen Fileserver](01_http/exercise/aufgabe1.md)
+
+## Erweitertes HTTP-Handling
+### Selber Anfragen stellen
+* [Einfache Wege eigene Anfragen zu stellen](02_http_extended/client/simple_client.go)
+* [Aber man kann auch Requests zusammenbauen](02_http_extended/client/client_example.go)
+
+### Plugins schreiben: Logging-Middleware als Beispiel
+* [Plugins zu schreiben ist ganz einfach](02_http_extended/chaining/log_middleware.go)
+
+### Wir schreiben eine Asset-Middleware!
+* [Schreiben wir ein Plugin!](02_http_extended/exercise/aufgabe2.md)
 
 ## Templating in go
 ### Das Package text/template
