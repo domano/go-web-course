@@ -16,7 +16,7 @@ var theTemplate = `<html>
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != "GET" {
-			w.WriteHeader(http.StatusMethodNotAllowedBadRequest)
+			w.WriteHeader(http.StatusMethodNotAllowed)
 			fmt.Fprintf(w, "Only GET is allowed\n")
 			return
 		}

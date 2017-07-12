@@ -5,51 +5,44 @@ import (
 	"text/template"
 )
 
-var theTemplate = `
-{{. | len}} Personen
+var userTemplate = `
+{{. | len}} User
 {{ range . }}
-{{.Given}} {{.Name}}
 =================
 Name:   {{.Name}}
-Given:  {{.Given}} 
 Age:    {{.Age}}
-Gender: {{ .Male | genderToText }}
-State: {{ if lt .Age 18 }}Child{{ else }}Adult{{end}}
+Status: {{ .IsAdmin | showStatus}}
+=================
 {{end}}
 `
 
 var functionMap = template.FuncMap{
-	"genderToText": func(male bool) string {
-		if male {
-			return "M"
+	"showStatus": func(isAdmin bool) string {
+		if isAdmin {
+			return "Admin"
 		} else {
-			return "F"
+			return "User"
 		}
 	},
 }
 
 func main() {
 
-	data := []struct {
-		Name  string
-		Given string
-		Age   int
-		Male  bool
+	users := []struct {
+		Name   string
+		Age    int
+		IsAdmin bool
 	}{
-		{"Sebastian", "Mancke", 37, true},
-		{"Sabrina", "Mancke", 37, false},
-		{"Felix", "Mancke", 12, true},
-		{"Nils", "Mancke", 9, true},
-		{"Emils", "Mancke", 6, true},
-		{"Linus", "Mancke", 2, true},
+		{"Dino Omanovic", 27, true},
+		{"Max Mustermann", 54, false},
 	}
 
 	t := template.New("template")
 	t.Funcs(functionMap)
 
-	template.Must(t.Parse(theTemplate))
+	template.Must(t.Parse(userTemplate))
 
-	err := t.Execute(os.Stdout, data)
+	err := t.Execute(os.Stdout, users)
 	if err != nil {
 		panic(err)
 	}
