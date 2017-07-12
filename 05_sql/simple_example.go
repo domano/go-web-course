@@ -42,6 +42,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		if err := rows.Scan(&id, &name, &age, &admin); err != nil {

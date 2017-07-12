@@ -32,6 +32,8 @@ func main() {
 	for rows.Next() {
 		rows.Scan(&id, &name, &age, &admin)
 	}
+	defer rows.Close()
+
 
 	fmt.Printf("Id: %d, Name: %s, Age: %d, Admin:%t", id, name, age, admin)
 }
