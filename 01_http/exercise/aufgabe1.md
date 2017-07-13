@@ -11,3 +11,5 @@ Der URL-Pfad soll hierbei als Dateiname genutzt werden
 * Datei lesen `ioutil.ReadFile(...)`
 * Ordner erstellen `os.MkdirAll(...)`
 * Datei schreiben `ioutil.WriteFile(..)`
+* Post Request absetzen `http.Post("http://localhost:10000", "application/json", bytes.NewReader(body))`
+* oder Curl: `curl -X POST --data "some-text" http//localhost:port`
