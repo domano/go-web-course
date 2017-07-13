@@ -1,4 +1,4 @@
-package chaining
+package main
 
 import (
 	"github.com/Sirupsen/logrus"
@@ -20,9 +20,11 @@ func (p *LoggingMiddleware) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	chain := &LoggingMiddleware{Delegate: http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	innerHandler := http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 		rw.Write([]byte("Das wurde geloggt!"))
-	})}
+	})
+
+	chain := &LoggingMiddleware{Delegate: innerHandler}
 
 	panic(http.ListenAndServe(":8080", chain))
 }
